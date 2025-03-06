@@ -3,17 +3,23 @@
 @using AutoRepairJsonWersion.Components.Services
 @rendermode InteractiveServer
 <h3>
-    <button @onclick="Output"> Вывести чуйтсов</button>
-    <div>Весь целиком</div>
-    <!--<div>@Client</div>-->
-    <div>Только имя</div>
-    <!--<div>@Client.Name</div>-->
+    <div>
+        <button @onclick="Output"> Вывести чуйтсов</button>
+        <div>
+            @foreach (var item in Client)
+            {
+                <a>@item.Name   </a>
+            }
+        </div>
+    </div>
 </h3>
 
 @code {
-    static Client? Client { get; set; }
+    static IList<Client>? Client { get; set; } = new List<Client>();
+    
     private static void Output()
     {
         Client = ClientProvider.ClientGetInfo();
     }
+    
 }

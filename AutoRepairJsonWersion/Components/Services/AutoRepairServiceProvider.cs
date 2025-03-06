@@ -31,4 +31,17 @@ public class AutoRepairServiceProvider
         var services = new AutoRepairService(serviceName, startTime, endTime, client, autoRepairCompleted);
         _services?.Add(services);
     }
+
+    public void DeleteService(string serviceName)//AutoRepairService service
+    {
+        var service = _services?.FirstOrDefault(s => s.ServiceName == serviceName);
+        _services?.Remove(service); 
+        SaveFile();
+    }
+    //Get
+    public static AutoRepairService? GetServiceInfo()
+    { 
+        AutoRepairService? service = JsonConvert.DeserializeObject<AutoRepairService>(File.ReadAllText(PathAllServices)); 
+        return service; 
+    }
 }

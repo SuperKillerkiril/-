@@ -43,9 +43,12 @@ public class ClientProvider
     {
         return _newClients.FirstOrDefault(x=> x.ClientCredentials.Login == login);
     } 
-    public static Client? ClientGetInfo()
+    public static IList<Client>? ClientGetInfo()
     {  
-        Client? clients = JsonConvert.DeserializeObject<Client>(PathAllClients);
-        return clients;
+        var json = File.ReadAllText(PathAllClients);
+        _newClients = JsonConvert.DeserializeObject<List<Client>>(json);
+        return _newClients;
     }
+
+   
 }
