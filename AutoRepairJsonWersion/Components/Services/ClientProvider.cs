@@ -42,5 +42,10 @@ public class ClientProvider
     public Client? GetUserByEmail(string login)
     {
         return _newClients.FirstOrDefault(x=> x.ClientCredentials.Login == login);
+    } 
+    public static Client? ClientGetInfo()
+    {  
+        Client? clients = JsonConvert.DeserializeObject<Client>(PathAllClients);
+        return clients;
     }
 }
