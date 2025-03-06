@@ -4,6 +4,7 @@ using AutoRepairJsonWersion.Components.Services;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSingleton<LoginProvider>();
 builder.Services.AddSingleton<ClientProvider>();
+builder.Services.AddSingleton<AutoRepairServiceProvider>();
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();

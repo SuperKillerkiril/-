@@ -1,15 +1,19 @@
 @page "/allClientDemonstration"
-@using System.Collections
 @using AutoRepairJsonWersion.Components.Models
 @using AutoRepairJsonWersion.Components.Services
 @rendermode InteractiveServer
 <h3>
+    <button @onclick="Output"> Вывести чуйтсов</button>
     <div>Весь целиком</div>
-    <div>@_client</div>
+    <!--<div>@Client</div>-->
     <div>Только имя</div>
-    <div>@_client.Name</div>
+    <!--<div>@Client.Name</div>-->
 </h3>
 
-@code { 
-    static Client? _client = ClientProvider.ClientGetInfo();
+@code {
+    static Client? Client { get; set; }
+    private static void Output()
+    {
+        Client = ClientProvider.ClientGetInfo();
+    }
 }

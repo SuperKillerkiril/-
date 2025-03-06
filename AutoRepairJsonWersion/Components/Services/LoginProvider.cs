@@ -14,7 +14,7 @@ public class LoginProvider(ClientProvider clientProvider)
         if(item.ClientCredentials.Login != login && item.ClientCredentials.Password != password) throw new Exception("Wrong login or password");
         _currentUser = item;
     }
-    public void Logout() //метод выхода
+    public void Logout() 
     {
         _currentUser = null;
     }
