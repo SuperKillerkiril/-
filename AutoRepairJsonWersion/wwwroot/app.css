@@ -63,3 +63,14 @@ h1:focus {
     padding: 20px;
     flex-wrap: wrap;
 }
+
+table {
+    border: 1px solid black; 
+    border-top: 3px solid grey;
+}
+td {
+    border-bottom: 1px solid grey;
+}
+th, td {
+    border: 1px solid black; padding: 10px 15px
+}
