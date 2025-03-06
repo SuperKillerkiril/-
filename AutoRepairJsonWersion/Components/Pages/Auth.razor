@@ -1,0 +1,26 @@
+@page "/authPage"
+@using AutoRepairJsonWersion.Components.Services
+@rendermode InteractiveServer
+@inject LoginProvider ClientLoginProvider
+@inject NavigationManager Navigationmanager
+
+<h3>Перед тем как увидеть контент войдите в свой профиль</h3>
+<div>
+    <div><input type="text" @bind="_login" placeholder="Введите логин"/></div>
+    <div><input type="password" @bind="_password" placeholder="Введите пароль"/></div>
+    <button @onclick="Do">Проверить данные</button>
+</div>
+
+
+
+@code {
+    private string _login { get; set; }
+    private string _password { get; set; }
+    public string _loginPageNextPath { get; set; } = "";
+
+    private void Do()
+    {
+        ClientLoginProvider.Login(_login, _password);
+    }
+
+}

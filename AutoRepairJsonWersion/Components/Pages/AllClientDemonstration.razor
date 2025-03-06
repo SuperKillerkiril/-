@@ -1,0 +1,22 @@
+@page "/allClientDemonstration"
+@using System.Collections
+@using AutoRepairJsonWersion.Components.Models
+@using Newtonsoft.Json
+@rendermode InteractiveServer
+<h3>
+    @for (int i = 0; i < 1; i++)
+    {
+        <div>@output()</div>
+    }
+</h3>
+
+@code {
+    
+    public Client? output()
+    {  
+        string path = "AllClient.json";
+        string jsonString = File.ReadAllText(path);
+        Client? clients = JsonConvert.DeserializeObject<Client>(jsonString);
+        return clients;
+    }
+}

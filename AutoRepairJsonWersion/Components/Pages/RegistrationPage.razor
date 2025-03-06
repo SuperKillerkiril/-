@@ -1,0 +1,38 @@
+@page "/registrationPage"
+@using AutoRepairJsonWersion.Components.Models
+@using AutoRepairJsonWersion.Components.Services
+@rendermode InteractiveServer
+@inject NavigationManager Navigationmanager
+<h3>Зарегистрируйтесь</h3>
+<div class="registered-button-input-size">
+    <div ><input type="text" @bind="_name" placeholder="Как вас зовут?"/></div>
+    <div><input type="text" @bind="_lastname" placeholder="А как по батюшке?"/></div>
+    <div><input type="text" @bind="_login" placeholder="Введите логин"/></div>
+    <div><input type="password" @bind="_password" placeholder="Введите пароль"/></div>
+    <button @onclick="Register">Зарегистрироваться</button>
+    @errorMsg
+</div>
+
+
+@code {
+    private string _login {get; set; }
+    private string _password { get; set; }
+    private string _name { get; set; }
+    private string _lastname { get; set; }
+    private string errorMsg;
+    private string PathNavigateTo = "";
+    
+    public void Register()
+    {
+        try
+        {
+            ClientProvider.AddNewClient(_name, _lastname, Role.Guest, _login, _password);
+        }
+        catch (Exception e)
+        {
+            errorMsg = e.Message;
+        }
+        ClientProvider.SaveFile();
+        Navigationmanager.NavigateTo(PathNavigateTo);
+    }
+}
